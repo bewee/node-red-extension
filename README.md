@@ -1,6 +1,8 @@
 # Node-RED extension
 
-Use your webthings in [Node-RED](https://nodered.org/) for advanced home automatization. For more information, have a look at [this](https://github.com/bewee/node-red-contrib-webthingsio#readme) page.
+Use your webthings in [Node-RED](https://nodered.org/) for advanced home automation. For more information, have a look at [this](https://github.com/bewee/node-red-contrib-webthingsio#readme) page.
+
+![image](https://user-images.githubusercontent.com/44091658/114248049-ffc24d00-9996-11eb-9771-7b3284e896f1.png)
 
 ## Setup
 
