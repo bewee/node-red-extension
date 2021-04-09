@@ -27,7 +27,7 @@
   "dependencies": {
     "dnssd": "^0.4.1",
     "node-red": "^1.2.9",
-    "node-red-contrib-webthingsio": "0.0.2"
+    "node-red-contrib-webthingsio": "0.0.3"
   },
   "devDependencies": {
     "@types/dnssd": "^0.4.1",
