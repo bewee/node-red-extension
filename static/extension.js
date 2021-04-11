@@ -6,8 +6,11 @@
       this.addMenuEntry('Node-RED');
 
       window.API.getAddonConfig('node-red-extension').then((config) => {
-        this.port = config.port || 1880;
-        this.nodeRedUrl = `http://${window.location.hostname}:${this.port}`;
+        const port = config.nodeRed.port || 1880;
+        const host = config.nodeRed.host ?
+          config.nodeRed.host :
+          window.location.hostname;
+        this.nodeRedUrl = `http://${host}:${port}`;
         this.addMenuObserver();
         this.applyViewVisibility();
       });

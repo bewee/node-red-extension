@@ -30,30 +30,75 @@
     }
   },
   "options": {
-    "default": {
-      "nodeRedHost": "0.0.0.0",
-      "nodeRedPort": 1880
-    },
+    "default": {},
     "schema": {
       "type": "object",
-      "required": [
-        "nodeRedHost",
-        "nodeRedPort"
-      ],
+      "required": [],
       "properties": {
-        "accessToken": {
-          "type": "string",
-          "title": "Access token",
-          "description": "required in order to communicate with devices"
+        "nodeRed": {
+          "type": "object",
+          "title": "Node-RED options",
+          "required": [],
+          "default": {
+            "port": 1880
+          },
+          "properties": {
+            "host": {
+              "type": "string",
+              "title": "Host to use include instead of of starting a local Node-RED instance",
+              "description": "leave empty to start a local Node-RED instance"
+            },
+            "port": {
+              "type": "integer",
+              "title": "Port",
+              "description": "the default value is \"1880\""
+            },
+            "settings": {
+              "type": "string",
+              "title": "Custom settings for the Node-RED process",
+              "description": "a JSON string; leave empty for defaults"
+            }
+          }
         },
-        "nodeRedPort": {
-          "type": "integer",
-          "title": "Node-RED port"
-        },
-        "nodeRedSettings": {
-          "type": "string",
-          "title": "Node-RED settings",
-          "description": "a JSON with custom settings for the Node-RED process; leave empty for defaults"
+        "gateway": {
+          "type": "object",
+          "title": "WebthingsGateway options",
+          "required": [],
+          "default": {
+            "port": 8080,
+            "https": false,
+            "skipValidation": false
+          },
+          "properties": {
+            "accessToken": {
+              "type": "string",
+              "title": "Access token",
+              "description": "required in order to communicate with devices"
+            },
+            "host": {
+              "type": "string",
+              "title": "Host",
+              "description": "when empty, the default value \"127.0.0.1\" is used"
+            },
+            "port": {
+              "type": "number",
+              "title": "Port",
+              "description": "the default value is \"8080\""
+            },
+            "https": {
+              "type": "boolean",
+              "title": "Use HTTPS?"
+            },
+            "skipValidation": {
+              "type": "boolean",
+              "title": "Skip validation?"
+            },
+            "name": {
+              "type": "string",
+              "title": "Name",
+              "description": "when empty, the default value \"Local\" is used"
+            }
+          }
         }
       }
     }

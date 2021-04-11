@@ -14,23 +14,38 @@ import http from 'http';
 
 export class NodeRedExtension {
 
-  private defaultLocalGateway: any;
-
   // eslint-disable-next-line no-unused-vars
   constructor(private addonManager: AddonManagerProxy, private config: Config) {
     this.initializeNodeRed();
-    this.defaultLocalGateway = {
+  }
+
+  defaultLocalGateway(): any {
+    if (!this.config.gateway) {
+      this.config.gateway = {};
+    }
+    return {
       type: 'webthingsio-gateway',
-      name: 'Local',
-      host: 'localhost',
-      port: 8080,
-      https: false,
-      accessToken: this.config.accessToken,
-      skipValidation: false,
+      name: this.config.gateway.name || 'Local',
+      host: this.config.gateway.host || '127.0.0.1',
+      port: this.config.gateway.port || 8080,
+      https: this.config.gateway.https,
+      accessToken: this.config.gateway.accessToken,
+      skipValidation: this.config.gateway.skipValidation,
     };
   }
 
   initializeNodeRed(): void {
+    if (!this.config.nodeRed) {
+      this.config.nodeRed = {};
+    }
+    if (this.config.nodeRed.host) {
+      const location =
+        `${this.config.nodeRed.host}:${this.config.nodeRed.port}`;
+      // eslint-disable-next-line max-len
+      console.warn(`Not starting a local Node-RED instance, but using the one hosted at ${location}! Please note that I cannot apply gateway specific options there :\\`);
+      return;
+    }
+
     const dataDir = (this.addonManager as any).userProfile.dataDir;
     const path = `${dataDir}/node-red-extension/`;
     if (!fs.existsSync(path)) {
@@ -49,11 +64,11 @@ export class NodeRedExtension {
       httpAdminRoot: '/',
       httpNodeRoot: '/',
       uiHost: '0.0.0.0',
-      uiPort: this.config.nodeRedPort || 1880,
+      uiPort: this.config.nodeRed.port || 1880,
     };
     let customSettings = {};
     try {
-      customSettings = JSON.parse(this.config.nodeRedSettings!);
+      customSettings = JSON.parse(this.config.nodeRed.settings!);
     } catch (ex) {
       console.info('No custom Node-RED settings specified!');
     }
@@ -83,7 +98,7 @@ export class NodeRedExtension {
   }
 
   async addGatewayNode(): Promise<void> {
-    if (!this.config.accessToken) {
+    if (!this.config.gateway || !this.config.gateway.accessToken) {
       // eslint-disable-next-line max-len
       console.warn('Not generating a local configuration node. Please consider adding an access token to the add-on config.');
       return;
@@ -99,17 +114,17 @@ export class NodeRedExtension {
     }
     const localgateways = configs.filter((node: any) => {
       return node.type === 'webthingsio-gateway' &&
-        node.name === 'Local';
+        node.name === this.defaultLocalGateway().name;
     });
     if (localgateways.length === 0) {
       console.info('Adding configuration node for local gateway');
       configs.push({
         id: util.generateId(),
-        ... this.defaultLocalGateway,
+        ... this.defaultLocalGateway(),
       });
     } else {
       console.info('Updating configuration node for local gateway');
-      Object.assign(localgateways[0], this.defaultLocalGateway);
+      Object.assign(localgateways[0], this.defaultLocalGateway());
     }
     RED.runtime.flows.updateFlow({
       id: globalflow.id,
