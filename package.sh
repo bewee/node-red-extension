@@ -7,6 +7,7 @@ rm -rf node_modules/.bin
 TARFILE=`npm pack`
 tar xzf ${TARFILE}
 cp -r node_modules ./package
+cp -r static ./package
 pushd package
 find . -type f -exec shasum --algorithm 256 {} \; >> SHA256SUMS
 popd
