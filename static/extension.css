@@ -3,13 +3,8 @@
 }
 
 #extension-node-red-extension-view {
-  height: calc(100% + 4rem);
-  width: calc(100% + 4rem);
-  top: -2rem;
-  left: -2rem;
   box-sizing: border-box;
-  overflow: none;
-  position: relative;
+  overflow: hidden;
 }
 
 #extension-node-red-extension-view iframe {
