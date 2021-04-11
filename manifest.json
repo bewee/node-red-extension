@@ -30,7 +30,16 @@
     }
   },
   "options": {
-    "default": {},
+    "default": {
+      "nodeRed": {
+        "port": 1880
+      },
+      "gateway": {
+        "port": 8080,
+        "https": false,
+        "skipValidation": false
+      }
+    },
     "schema": {
       "type": "object",
       "required": [],
@@ -39,9 +48,6 @@
           "type": "object",
           "title": "Node-RED options",
           "required": [],
-          "default": {
-            "port": 1880
-          },
           "properties": {
             "host": {
               "type": "string",
@@ -64,11 +70,6 @@
           "type": "object",
           "title": "WebthingsGateway options",
           "required": [],
-          "default": {
-            "port": 8080,
-            "https": false,
-            "skipValidation": false
-          },
           "properties": {
             "accessToken": {
               "type": "string",
