@@ -32,7 +32,8 @@
   "options": {
     "default": {
       "nodeRed": {
-        "port": 1880
+        "port": 1880,
+        "debug": false
       },
       "gateway": {
         "port": 8080,
@@ -58,6 +59,10 @@
               "type": "integer",
               "title": "Port",
               "description": "the default value is \"1880\""
+            },
+            "debug": {
+              "type": "boolean",
+              "title": "Debug-Mode"
             },
             "settings": {
               "type": "string",

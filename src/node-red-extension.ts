@@ -55,7 +55,9 @@ export class NodeRedExtension {
     process.env.HOME = path;
     process.env.USERPROFILE = path;
     process.env.HOMEPATH = path;
-    process.env.DEBUG = '*';
+    if (this.config.nodeRed.debug) {
+      process.env.DEBUG = '*';
+    }
 
     const app = express();
 
