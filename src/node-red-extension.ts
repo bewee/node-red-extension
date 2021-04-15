@@ -67,6 +67,9 @@ export class NodeRedExtension {
       httpNodeRoot: '/',
       uiHost: '0.0.0.0',
       uiPort: this.config.nodeRed.port || 1880,
+      webthingsioGatewayReconnectInterval: this.config.nodeRed.reconnectInterval,
+      webthingsioGatewayShorterLabels: this.config.nodeRed.shorterLabels,
+      webthingsioGatewayLimitInputLen: this.config.nodeRed.limitInputLen,
     };
     let customSettings = {};
     try {

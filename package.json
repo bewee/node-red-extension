@@ -1,8 +1,8 @@
 {
   "name": "node-red-extension",
   "display_name": "Node-RED",
-  "version": "0.0.4",
-  "description": "Use your webthings in Node-RED for advanced home automatization",
+  "version": "0.1.0",
+  "description": "Use your webthings in Node-RED for advanced home automation",
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -27,7 +27,7 @@
   "dependencies": {
     "dnssd": "^0.4.1",
     "node-red": "^1.2.9",
-    "node-red-contrib-webthingsio": "0.0.6"
+    "node-red-contrib-webthingsio": "0.1.0"
   },
   "devDependencies": {
     "@types/dnssd": "^0.4.1",

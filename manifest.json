@@ -33,7 +33,10 @@
     "default": {
       "nodeRed": {
         "port": 1880,
-        "debug": false
+        "debug": false,
+        "reconnectInterval": 5,
+        "shorterLabels": false,
+        "limitInputLen": 15
       },
       "gateway": {
         "port": 8080,
@@ -62,7 +65,22 @@
             },
             "debug": {
               "type": "boolean",
-              "title": "Debug-Mode"
+              "title": "Debug-Mode?"
+            },
+            "reconnectInterval": {
+              "type": "number",
+              "title": "Reconnect interval",
+              "description": "Milliseconds after which to reattempt connecting when the connection was lost"
+            },
+            "shorterLabels": {
+              "type": "boolean",
+              "title": "Use shorter labels?"
+            },
+            "limitInputLen": {
+              "type": "integer",
+              "title": "Limit input length",
+              "description": "Number of characters to limit the length of the input/value in the node name to",
+              "minimum": 0
             },
             "settings": {
               "type": "string",
