@@ -55,7 +55,7 @@
           "properties": {
             "host": {
               "type": "string",
-              "title": "Host to use include instead of of starting a local Node-RED instance",
+              "title": "Host to include instead of starting a local Node-RED instance",
               "description": "leave empty to start a local Node-RED instance"
             },
             "port": {
