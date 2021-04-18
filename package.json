@@ -1,7 +1,7 @@
 {
   "name": "node-red-extension",
   "display_name": "Node-RED",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Use your webthings in Node-RED for advanced home automation",
   "main": "lib/index.js",
   "scripts": {
