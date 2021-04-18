@@ -93,12 +93,14 @@ export class NodeRedExtension {
     app.use(settings.httpNodeRoot as string, RED.httpNode);
     RED.start().then(async () => {
       console.info('Node-RED running!');
-      this.addGatewayNode();
       server.on('error', (err) => {
         console.error('Server error:', err);
       });
       server.listen(settings.uiPort, settings.uiHost, () => {
         console.info('Node-RED server listening!');
+        setTimeout(() => {
+          this.addGatewayNode();
+        }, 1000);
       });
     });
   }
