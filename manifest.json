@@ -70,7 +70,7 @@
             "reconnectInterval": {
               "type": "number",
               "title": "Reconnect interval",
-              "description": "Milliseconds after which to reattempt connecting when the connection was lost"
+              "description": "Seconds after which to reattempt connecting when the connection was lost"
             },
             "shorterLabels": {
               "type": "boolean",
