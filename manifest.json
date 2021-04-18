@@ -3,7 +3,7 @@
   "id": "node-red-extension",
   "name": "Node-RED",
   "short_name": "Node-RED",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Use your webthings in Node-RED for advanced home automatization",
   "homepage_url": "https://github.com/bewee/node-red-extension#readme",
   "license": "MPL-2.0",
